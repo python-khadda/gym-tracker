@@ -1,0 +1,20 @@
+services:
+  postgres:
+    container_name: gym_tracker_postgres
+    image: postgres
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-gymtrk}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-123456}
+      POSTGRES_DB: ${POSTGRES_DBNAME:-gym_tracker}
+      PGDATA: /data/postgres
+    volumes:
+      - ./data:/data/postgres
+    ports:
+      - "5432:5432"
+    networks:
+      - postgres
+    restart: unless-stopped
+
+networks:
+  postgres:
+    driver: bridge
