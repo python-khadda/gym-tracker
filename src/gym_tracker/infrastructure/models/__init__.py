@@ -1,2 +1,2 @@
-from . import exercise, muscle, user
-from .base import Base
+from . import User, UserProfile
+from .Base import Base

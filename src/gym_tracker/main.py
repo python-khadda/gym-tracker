@@ -1,7 +1,7 @@
 import uvicorn
 from fastapi import FastAPI
 
-from gym_tracker.app.api.router import api_router
+from gym_tracker.app.core.router import api_router
 
 app = FastAPI()
 app.include_router(api_router)

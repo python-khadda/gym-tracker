@@ -1,4 +1,3 @@
-from typing import Optional
 from uuid import UUID
 
 import bcrypt
@@ -18,7 +17,7 @@ class UserDomain(BaseModel):
     model_config = ConfigDict(from_attributes=True)
 
 
-class CreateUserDomain(UserDomain):
+class SignUpUserDomain(UserDomain):
     password: str
 
     @staticmethod
@@ -26,10 +25,15 @@ class CreateUserDomain(UserDomain):
         return bcrypt.hashpw(password.encode(), bcrypt.gensalt())
 
 
-class UpdateUserDomain(BaseModel):
-    email: Optional[EmailStr] = None
-    first_name: Optional[str] = None
-    last_name: Optional[str] = None
-    password: Optional[str] = None
-    birthdate: Optional[PastDate] = None
-    sexe: Optional[SexeEnum] = None
+class SignInUserDomain(BaseModel):
+    email: EmailStr
+    password: str
+
+
+class SignInResponseDomain(BaseModel):
+    accessToken: str | None = None
+    refreshToken: str | None = None
+
+
+class UserDomainResponse(UserDomain):
+    password: bytes

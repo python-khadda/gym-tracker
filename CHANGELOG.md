@@ -7,5 +7,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- feat: implement authentication
 - feat: implement users CRUD
 - feat: initialize fastapi, alembic and sqlalchemy
